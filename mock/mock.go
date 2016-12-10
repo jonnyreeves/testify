@@ -457,6 +457,11 @@ func (m *Mock) calls() []Call {
 	return append([]Call{}, m.Calls...)
 }
 
+// Reset removes all programmed expectations from a mock
+func Reset(m *Mock) {
+	m.ExpectedCalls = nil
+}
+
 /*
 	Arguments
 */
