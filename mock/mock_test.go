@@ -1156,3 +1156,17 @@ func Test_WaitUntil_Parallel(t *testing.T) {
 	// Allow the first call to execute, so the second one executes afterwards
 	ch2 <- time.Now()
 }
+
+func Test_Reset(t *testing.T) {
+	// make a test impl object
+	var mockedService = new(TestExampleImplementation)
+
+	mockedService.
+		On("TheExampleMethod", 1, 2, 3).
+		Return(0)
+
+	assert.Equal(t, 1, len(m.ExpectedCalls))
+
+	mockedService.Reset()
+	assert.Equal(t, 0, len(m.ExpectedCalls))	
+}
